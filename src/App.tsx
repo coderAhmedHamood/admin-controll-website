@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
-import { AdminProvider } from './contexts/AdminContext';
-import Layout from './components/Layout';
+import { AdminProvider, useAdmin } from './contexts/AdminContext';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminLayout from './components/admin/AdminLayout';
 import Dashboard from './components/admin/Dashboard';
@@ -14,18 +13,6 @@ import FAQManager from './components/admin/FAQManager';
 import Vision2030Manager from './components/admin/Vision2030Manager';
 import ContentManager from './components/admin/ContentManager';
 import ProjectManager from './components/admin/ProjectManager';
-
-// Pages
-import Home from './pages/Home';
-import Services from './pages/Services';
-import Projects from './pages/Projects';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import ClientRegistration from './pages/ClientRegistration';
-import Leadership from './pages/Leadership';
-import Testimonials from './pages/Testimonials';
-import FAQ from './pages/FAQ';
-import Vision2030 from './pages/Vision2030';
 
 // Admin Route Guard
 const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -40,20 +27,9 @@ function App() {
         <AdminProvider>
           <Router>
             <Routes>
-              {/* Public Routes */}
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="services" element={<Services />} />
-                <Route path="projects" element={<Projects />} />
-                <Route path="about" element={<About />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="register" element={<ClientRegistration />} />
-                <Route path="leadership" element={<Leadership />} />
-                <Route path="testimonials" element={<Testimonials />} />
-                <Route path="faq" element={<FAQ />} />
-                <Route path="vision2030" element={<Vision2030 />} />
-              </Route>
-              
+              {/* Redirect root to admin */}
+              <Route path="/" element={<Navigate to="/admin" replace />} />
+
               {/* Admin Routes */}
               <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
                 <Route index element={<Dashboard />} />
@@ -67,6 +43,9 @@ function App() {
                 <Route path="analytics" element={<div>Analytics Dashboard</div>} />
                 <Route path="settings" element={<div>Settings</div>} />
               </Route>
+
+              {/* Catch all other routes and redirect to admin */}
+              <Route path="*" element={<Navigate to="/admin" replace />} />
             </Routes>
           </Router>
         </AdminProvider>
@@ -74,8 +53,5 @@ function App() {
     </ThemeProvider>
   );
 }
-
-// Import useAdmin hook
-import { useAdmin } from './contexts/AdminContext';
 
 export default App;
