@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import ServicesManager from './ServicesManager';
+import TeamManager from './TeamManager';
+import FAQManager from './FAQManager';
 import { 
   Home, 
   FileText, 
@@ -14,16 +16,13 @@ import {
   MessageSquare,
   HelpCircle,
   Target,
-  Award,
   Globe,
   Bell,
   Search,
   Shield,
   Image,
   UserCheck,
-  Mail,
-  Calendar,
-  TrendingUp
+  Mail
 } from 'lucide-react';
 import { useAdmin } from '../../contexts/AdminContext';
 
@@ -186,11 +185,11 @@ const AdminLayout: React.FC = () => {
           {currentPage === 'services' ? (
             <ServicesManager />
           ) : currentPage === 'team' ? (
-            <div>إدارة الفريق - قيد التطوير</div>
+            <TeamManager />
           ) : currentPage === 'testimonials' ? (
             <div>إدارة الشهادات - قيد التطوير</div>
           ) : currentPage === 'faq' ? (
-            <div>إدارة الأسئلة الشائعة - قيد التطوير</div>
+            <FAQManager />
           ) : currentPage === 'vision2030' ? (
             <div>إدارة رؤية 2030 - قيد التطوير</div>
           ) : currentPage === 'gallery' ? (

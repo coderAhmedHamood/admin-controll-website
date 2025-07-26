@@ -1,203 +1,244 @@
 import React, { useState } from 'react';
-import { 
+import {
   Plus, 
   Edit3, 
   Trash2, 
   Save, 
   X, 
-  Star, 
-  Building, 
-  User, 
-  Calendar,
-  Search,
-  Filter,
-  Eye,
-  MessageSquare
+  Users, 
+  Mail, 
+  Phone, 
+  Linkedin, 
+  Award,
+  Search
 } from 'lucide-react';
 
-interface Testimonial {
+interface TeamMember {
   id: string;
-  clientName: string;
+  name: string;
   position: string;
-  company: string;
-  projectName: string;
-  projectValue: string;
-  duration: string;
-  rating: number;
-  testimonialText: string;
+  department: string;
+  bio: string;
+  email: string;
+  phone: string;
+  linkedin: string;
   image: string;
-  date: string;
-  category: 'commercial' | 'residential' | 'industrial';
+  experience: string;
+  specialty: string;
+  achievements: string[];
+  skills: string[];
   isActive: boolean;
-  isFeatured: boolean;
   order: number;
+  joinDate: string;
 }
 
-const TestimonialsManager: React.FC = () => {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([
+const TeamManager: React.FC = () => {
+    const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
     {
       id: '1',
-      clientName: 'د. عبدالله المحمود',
+      name: 'د. عبدالله المحمود',
       position: 'الرئيس التنفيذي',
-      company: 'مجموعة التطوير الملكي',
-      projectName: 'برج الرياض التجاري',
-      projectValue: '85 مليون دولار',
-      duration: '36 شهراً',
-      rating: 5,
-      testimonialText: 'تجاوزت شركة أوج الدولية توقعاتنا في كل جانب من جوانب مشروع برج الرياض التجاري. اهتمامهم بالتفاصيل والتسليم في الوقت المحدد والجودة الاستثنائية جعلتهم شريكنا المفضل في البناء. تم إنجاز المشروع قبل الموعد المحدد بأسبوعين!',
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300',
-      date: '2024-01-15',
-      category: 'commercial',
+      department: 'مجموعة التطوير الملكي',
+      bio: 'تجاوزت شركة أوج الدولية توقعاتنا في كل جانب من جوانب مشروع برج الرياض التجاري. اهتمامهم بالتفاصيل والتسليم في الوقت المحدد والجودة الاستثنائية جعلتهم شريكنا المفضل في البناء. تم إنجاز المشروع قبل الموعد المحدد بأسبوعين!',
+      email: 'a.almahmoud@royaldev.sa',
+      phone: '+966112345678',
+      linkedin: 'https://linkedin.com/in/abdullah-almahmoud',
+      image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
+      experience: '36 شهراً',
+      specialty: 'برج الرياض التجاري (85 مليون دولار)',
+      achievements: [
+        'إنجاز المشروع قبل الموعد المحدد بأسبوعين',
+        'قاد مشروع برج الرياض التجاري'
+      ],
+      skills: ['القيادة الاستراتيجية', 'إدارة المشاريع الكبرى', 'التطوير العقاري'],
       isActive: true,
-      isFeatured: true,
-      order: 1
+      order: 1,
+      joinDate: '2024-02-13', // Corresponds to ٣ رجب ١٤٤٥ هـ
     },
     {
       id: '2',
-      clientName: 'م. فاطمة الزهراء',
+      name: 'م. فاطمة الزهراء',
       position: 'مديرة المشاريع',
-      company: 'شركة النور العقارية',
-      projectName: 'مجمع النور السكني',
-      projectValue: '45 مليون دولار',
-      duration: '24 شهراً',
-      rating: 5,
-      testimonialText: 'أظهر فريق شركة أوج الدولية مهنية وخبرة لا مثيل لها طوال مشروع مجمعنا السكني. حلولهم المبتكرة والتزامهم بالاستدامة يتماشى تماماً مع رؤيتنا للمعيشة الحديثة في المملكة العربية السعودية.',
-      image: 'https://images.pexels.com/photos/3760267/pexels-photo-3760267.jpeg?auto=compress&cs=tinysrgb&w=300',
-      date: '2023-11-28',
-      category: 'residential',
+      department: 'شركة النور العقارية',
+      bio: 'أظهر فريق شركة أوج الدولية مهنية وخبرة لا مثيل لها طوال مشروع مجمعنا السكني. حلولهم المبتكرة والتزامهم بالاستدامة يتماشى تماماً مع رؤيتنا للمعيشة الحديثة في المملكة العربية السعودية.',
+      email: 'f.alzahraa@alnoor.sa',
+      phone: '+966118765432',
+      linkedin: 'https://linkedin.com/in/fatima-alzahraa',
+      image: 'https://images.pexels.com/photos/3760854/pexels-photo-3760854.jpeg?auto=compress&cs=tinysrgb&w=400',
+      experience: '24 شهراً',
+      specialty: 'مجمع النور السكني (45 مليون دولار)',
+      achievements: [
+        'إدارة مشروع مجمع النور السكني',
+        'تطبيق حلول مبتكرة ومستدامة'
+      ],
+      skills: ['إدارة المشاريع', 'الاستدامة', 'التطوير السكني'],
       isActive: true,
-      isFeatured: true,
-      order: 2
+      order: 2,
+      joinDate: '2023-11-28', // Corresponds to ١٤ جمادى الأولى ١٤٤٥ هـ
     },
     {
       id: '3',
-      clientName: 'محمد الراشد',
+      name: 'محمد الراشد',
       position: 'مدير العمليات',
-      company: 'التنمية الصناعية السعودية',
-      projectName: 'المدينة الصناعية - المرحلة الأولى',
-      projectValue: '120 مليون دولار',
-      duration: '18 شهراً',
-      rating: 5,
-      testimonialText: 'خبرة شركة أوج الدولية في البناء الصناعي رائعة. نجحوا في تسليم مرفق التصنيع الخاص بنا مع بنية تحتية متطورة تدعم أهداف رؤية 2030. معرفتهم التقنية ومهارات إدارة المشاريع مثيرة للإعجاب حقاً.',
-      image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=300',
-      date: '2023-12-10',
-      category: 'industrial',
+      department: 'التنمية الصناعية السعودية',
+      bio: 'خبرة شركة أوج الدولية في البناء الصناعي رائعة. نجحوا في تسليم مرفق التصنيع الخاص بنا مع بنية تحتية متطورة تدعم أهداف رؤية 2030.',
+      email: 'm.alrashed@sid.sa',
+      phone: '+966119876543',
+      linkedin: 'https://linkedin.com/in/mohammed-alrashed',
+      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=400',
+      experience: '18 شهراً',
+      specialty: 'المدينة الصناعية - المرحلة الأولى (120 مليون دولار)',
+      achievements: [
+        'تسليم مرفق تصنيع ببنية تحتية متطورة',
+        'دعم أهداف رؤية 2030'
+      ],
+      skills: ['إدارة العمليات', 'البناء الصناعي', 'إدارة المشاريع التقنية'],
       isActive: true,
-      isFeatured: false,
-      order: 3
+      order: 3,
+      joinDate: '2023-12-10', // Corresponds to ٢٦ جمادى الأولى ١٤٤٥ هـ
+    },
+    {
+      id: '4',
+      name: 'سارة المنصوري',
+      position: 'مديرة التطوير',
+      department: 'تطوير الوادي الأخضر',
+      bio: 'العمل مع شركة أوج الدولية في مول الوادي الأخضر كان تجربة استثنائية. إبداع فريقهم وخبرتهم التقنية والتزامهم بالجودة أدى إلى وجهة تسوق عالمية المستوى تجاوزت كل توقعاتنا.',
+      email: 's.almansouri@greenvalley.sa',
+      phone: '+966115432198',
+      linkedin: 'https://linkedin.com/in/sara-almansouri',
+      image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400',
+      experience: '30 شهراً',
+      specialty: 'مول الوادي الأخضر (65 مليون دولار)',
+      achievements: [
+        'تطوير وجهة تسوق عالمية المستوى',
+        'تحقيق جودة عالية وتجاوز التوقعات'
+      ],
+      skills: ['التطوير التجاري', 'إدارة المشاريع العقارية', 'الإبداع والابتكار'],
+      isActive: true,
+      order: 4,
+      joinDate: '2023-10-20', // Corresponds to ٥ ربيع الآخر ١٤٤٥ هـ
     }
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterCategory, setFilterCategory] = useState('all');
-  const [filterRating, setFilterRating] = useState('all');
+  const [filterDepartment, setFilterDepartment] = useState('all');
   const [showAddModal, setShowAddModal] = useState(false);
-  const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null);
-  const [newTestimonial, setNewTestimonial] = useState<Partial<Testimonial>>({
-    clientName: '',
+  const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
+  const [newMember, setNewMember] = useState<Partial<TeamMember>>({
+    name: '',
     position: '',
-    company: '',
-    projectName: '',
-    projectValue: '',
-    duration: '',
-    rating: 5,
-    testimonialText: '',
+    department: 'الإدارة العليا',
+    bio: '',
+    email: '',
+    phone: '',
+    linkedin: '',
     image: '',
-    date: new Date().toISOString().split('T')[0],
-    category: 'commercial',
+    experience: '',
+    specialty: '',
+    achievements: [''],
+    skills: [''],
     isActive: true,
-    isFeatured: false,
-    order: testimonials.length + 1
+    order: teamMembers.length + 1,
+    joinDate: new Date().toISOString().split('T')[0]
   });
 
-  const categories = [
-    { value: 'all', label: 'جميع الفئات' },
-    { value: 'commercial', label: 'تجاري' },
-    { value: 'residential', label: 'سكني' },
-    { value: 'industrial', label: 'صناعي' }
+  const departments = [
+    { value: 'all', label: 'جميع الأقسام' },
+    { value: 'الإدارة العليا', label: 'الإدارة العليا' },
+    { value: 'العمليات', label: 'العمليات' },
+    { value: 'التكنولوجيا', label: 'التكنولوجيا' },
+    { value: 'المالية', label: 'المالية' },
+    { value: 'الموارد البشرية', label: 'الموارد البشرية' },
+    { value: 'المشاريع', label: 'المشاريع' },
+    { value: 'الهندسة', label: 'الهندسة' },
+    { value: 'التطوير', label: 'التطوير' }
   ];
 
-  const ratings = [
-    { value: 'all', label: 'جميع التقييمات' },
-    { value: '5', label: '5 نجوم' },
-    { value: '4', label: '4 نجوم' },
-    { value: '3', label: '3 نجوم' },
-    { value: '2', label: '2 نجوم' },
-    { value: '1', label: '1 نجمة' }
-  ];
-
-  const filteredTestimonials = testimonials.filter(testimonial => {
-    const matchesSearch = testimonial.clientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         testimonial.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         testimonial.projectName.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = filterCategory === 'all' || testimonial.category === filterCategory;
-    const matchesRating = filterRating === 'all' || testimonial.rating.toString() === filterRating;
-    return matchesSearch && matchesCategory && matchesRating;
+  const filteredMembers = teamMembers.filter(member => {
+    const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         member.position.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesDepartment = filterDepartment === 'all' || member.department === filterDepartment;
+    return matchesSearch && matchesDepartment;
   });
 
-  const handleSaveTestimonial = () => {
-    if (editingTestimonial) {
-      setTestimonials(testimonials.map(t => t.id === editingTestimonial.id ? editingTestimonial : t));
-      setEditingTestimonial(null);
+  const handleSaveMember = () => {
+    if (editingMember) {
+      setTeamMembers(teamMembers.map(m => m.id === editingMember.id ? editingMember : m));
+      setEditingMember(null);
     } else {
       const id = Date.now().toString();
-      setTestimonials([...testimonials, { ...newTestimonial, id } as Testimonial]);
-      setNewTestimonial({
-        clientName: '',
+      setTeamMembers([...teamMembers, { ...newMember, id } as TeamMember]);
+      setNewMember({
+        name: '',
         position: '',
-        company: '',
-        projectName: '',
-        projectValue: '',
-        duration: '',
-        rating: 5,
-        testimonialText: '',
+        department: 'الإدارة العليا',
+        bio: '',
+        email: '',
+        phone: '',
+        linkedin: '',
         image: '',
-        date: new Date().toISOString().split('T')[0],
-        category: 'commercial',
+        experience: '',
+        specialty: '',
+        achievements: [''],
+        skills: [''],
         isActive: true,
-        isFeatured: false,
-        order: testimonials.length + 1
+        order: teamMembers.length + 1,
+        joinDate: new Date().toISOString().split('T')[0]
       });
       setShowAddModal(false);
     }
   };
 
-  const handleDeleteTestimonial = (id: string) => {
-    if (window.confirm('هل أنت متأكد من حذف هذه الشهادة؟')) {
-      setTestimonials(testimonials.filter(t => t.id !== id));
+  const handleDeleteMember = (id: string) => {
+    if (window.confirm('هل أنت متأكد من حذف هذا العضو؟')) {
+      setTeamMembers(teamMembers.filter(m => m.id !== id));
     }
   };
 
-  const renderStars = (rating: number, interactive: boolean = false, onChange?: (rating: number) => void) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <Star
-        key={index}
-        className={`w-5 h-5 ${
-          index < rating 
-            ? 'text-yellow-400 fill-current' 
-            : 'text-gray-300 dark:text-gray-600'
-        } ${interactive ? 'cursor-pointer hover:text-yellow-400' : ''}`}
-        onClick={interactive && onChange ? () => onChange(index + 1) : undefined}
-      />
-    ));
+  const addListItem = (type: 'achievements' | 'skills', isEditing: boolean = false) => {
+    if (isEditing && editingMember) {
+      setEditingMember({
+        ...editingMember,
+        [type]: [...editingMember[type], '']
+      });
+    } else {
+      setNewMember({
+        ...newMember,
+        [type]: [...(newMember[type] || []), '']
+      });
+    }
   };
 
-  const getCategoryColor = (category: string) => {
-    const colors = {
-      commercial: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300',
-      residential: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300',
-      industrial: 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300'
-    };
-    return colors[category as keyof typeof colors];
+  const removeListItem = (type: 'achievements' | 'skills', index: number, isEditing: boolean = false) => {
+    if (isEditing && editingMember) {
+      setEditingMember({
+        ...editingMember,
+        [type]: editingMember[type].filter((_, i) => i !== index)
+      });
+    } else {
+      setNewMember({
+        ...newMember,
+        [type]: newMember[type]?.filter((_, i) => i !== index) || []
+      });
+    }
   };
 
-  const getCategoryLabel = (category: string) => {
-    const labels = {
-      commercial: 'تجاري',
-      residential: 'سكني',
-      industrial: 'صناعي'
-    };
-    return labels[category as keyof typeof labels];
+  const updateListItem = (type: 'achievements' | 'skills', index: number, value: string, isEditing: boolean = false) => {
+    if (isEditing && editingMember) {
+      const updated = [...editingMember[type]];
+      updated[index] = value;
+      setEditingMember({
+        ...editingMember,
+        [type]: updated
+      });
+    } else {
+      const updated = [...(newMember[type] || [])];
+      updated[index] = value;
+      setNewMember({
+        ...newMember,
+        [type]: updated
+      });
+    }
   };
 
   return (
@@ -205,9 +246,9 @@ const TestimonialsManager: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">إدارة الشهادات</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">إدارة الفريق</h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
-            إدارة شاملة لشهادات العملاء وتقييماتهم
+            إدارة شاملة لأعضاء فريق الشركة ومعلوماتهم
           </p>
         </div>
         
@@ -216,7 +257,7 @@ const TestimonialsManager: React.FC = () => {
           className="flex items-center space-x-2 space-x-reverse px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
         >
           <Plus className="w-4 h-4" />
-          <span>إضافة شهادة جديدة</span>
+          <span>إضافة عضو جديد</span>
         </button>
       </div>
 
@@ -227,159 +268,136 @@ const TestimonialsManager: React.FC = () => {
             <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
-              placeholder="البحث في الشهادات..."
+              placeholder="البحث في أعضاء الفريق..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pr-10 pl-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
             />
           </div>
 
-          <div className="flex items-center space-x-4 space-x-reverse">
-            <select
-              value={filterCategory}
-              onChange={(e) => setFilterCategory(e.target.value)}
-              className="px-3 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
-            >
-              {categories.map(category => (
-                <option key={category.value} value={category.value}>
-                  {category.label}
-                </option>
-              ))}
-            </select>
-
-            <select
-              value={filterRating}
-              onChange={(e) => setFilterRating(e.target.value)}
-              className="px-3 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
-            >
-              {ratings.map(rating => (
-                <option key={rating.value} value={rating.value}>
-                  {rating.label}
-                </option>
-              ))}
-            </select>
-          </div>
+          <select
+            value={filterDepartment}
+            onChange={(e) => setFilterDepartment(e.target.value)}
+            className="px-3 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
+          >
+            {departments.map(dept => (
+              <option key={dept.value} value={dept.value}>
+                {dept.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
-      {/* Testimonials Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {filteredTestimonials.map((testimonial) => (
+      {/* Team Members Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        {filteredMembers.map((member) => (
           <div
-            key={testimonial.id}
+            key={member.id}
             className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="p-6">
-              <div className="flex items-start space-x-4 space-x-reverse mb-6">
-                <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg">
+            <div className="relative">
+              <div className="h-32 bg-gradient-to-r from-blue-600 to-purple-600"></div>
+              
+              <div className="absolute -bottom-12 right-6">
+                <div className="w-24 h-24 rounded-full border-4 border-white dark:border-gray-800 overflow-hidden shadow-lg">
                   <img
-                    src={testimonial.image}
-                    alt={testimonial.clientName}
+                    src={member.image}
+                    alt={member.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                    {testimonial.clientName}
-                  </h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">
-                    {testimonial.position}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {testimonial.company}
-                  </p>
+              </div>
+
+              <div className="absolute top-4 left-4 flex space-x-2 space-x-reverse">
+                <button
+                  onClick={() => setEditingMember(member)}
+                  className="p-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors duration-200"
+                >
+                  <Edit3 className="w-4 h-4 text-white" />
+                </button>
+                <button
+                  onClick={() => handleDeleteMember(member.id)}
+                  className="p-2 bg-red-500/20 backdrop-blur-sm rounded-lg hover:bg-red-500/30 transition-colors duration-200"
+                >
+                  <Trash2 className="w-4 h-4 text-white" />
+                </button>
+              </div>
+
+              <div className="absolute top-4 right-4">
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  member.isActive 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-red-100 text-red-800'
+                }`}>
+                  {member.isActive ? 'نشط' : 'غير نشط'}
+                </span>
+              </div>
+            </div>
+
+            <div className="pt-16 p-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                {member.name}
+              </h3>
+              
+              <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">
+                {member.position}
+              </p>
+
+              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                {member.department}
+              </p>
+
+              <div className="space-y-3 mb-4">
+                <div className="flex items-center space-x-2 space-x-reverse text-sm">
+                  <Award className="w-4 h-4 text-gray-400" />
+                  <span className="text-gray-600 dark:text-gray-400">{member.experience} خبرة</span>
                 </div>
-                <div className="flex items-center space-x-1 space-x-reverse">
-                  {renderStars(testimonial.rating)}
+                <div className="flex items-center space-x-2 space-x-reverse text-sm">
+                  <Users className="w-4 h-4 text-gray-400" />
+                  <span className="text-gray-600 dark:text-gray-400">{member.specialty}</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-2xl">
-                <div className="text-center">
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">
-                    {testimonial.projectValue}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">قيمة المشروع</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">
-                    {testimonial.duration}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">المدة</div>
-                </div>
-              </div>
-
-              <div className="relative mb-6">
-                <MessageSquare className="absolute -top-2 -right-2 w-8 h-8 text-blue-200 dark:text-blue-800 opacity-50" />
-                <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed pr-6 italic">
-                  "{testimonial.testimonialText}"
-                </blockquote>
-              </div>
-
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-3 space-x-reverse">
-                  <Building className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
-                    {testimonial.projectName}
-                  </span>
-                </div>
-                <div className="flex items-center space-x-2 space-x-reverse text-sm text-gray-600 dark:text-gray-400">
-                  <Calendar className="w-4 h-4" />
-                  <span>{new Date(testimonial.date).toLocaleDateString('ar-SA')}</span>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2 space-x-reverse">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(testimonial.category)}`}>
-                    {getCategoryLabel(testimonial.category)}
-                  </span>
-                  {testimonial.isFeatured && (
-                    <span className="px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 rounded-full text-xs font-semibold">
-                      مميزة
-                    </span>
-                  )}
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    testimonial.isActive 
-                      ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' 
-                      : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
-                  }`}>
-                    {testimonial.isActive ? 'نشط' : 'غير نشط'}
-                  </span>
-                </div>
-
-                <div className="flex items-center space-x-2 space-x-reverse">
-                  <button
-                    onClick={() => setEditingTestimonial(testimonial)}
-                    className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors duration-200"
-                  >
-                    <Edit3 className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => handleDeleteTestimonial(testimonial.id)}
-                    className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors duration-200"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
+              <div className="flex space-x-3 space-x-reverse">
+                <a
+                  href={`mailto:${member.email}`}
+                  className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors duration-200"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
+                <a
+                  href={`tel:${member.phone}`}
+                  className="p-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors duration-200"
+                >
+                  <Phone className="w-4 h-4" />
+                </a>
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors duration-200"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Add/Edit Testimonial Modal */}
-      {(showAddModal || editingTestimonial) && (
+      {/* Add/Edit Member Modal */}
+      {(showAddModal || editingMember) && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                {editingTestimonial ? 'تعديل الشهادة' : 'إضافة شهادة جديدة'}
+                {editingMember ? 'تعديل عضو الفريق' : 'إضافة عضو جديد'}
               </h2>
               <button
                 onClick={() => {
                   setShowAddModal(false);
-                  setEditingTestimonial(null);
+                  setEditingMember(null);
                 }}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
               >
@@ -388,26 +406,26 @@ const TestimonialsManager: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Client Information */}
+              {/* Personal Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">معلومات العميل</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">المعلومات الشخصية</h3>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    اسم العميل
+                    الاسم الكامل
                   </label>
                   <input
                     type="text"
-                    value={editingTestimonial ? editingTestimonial.clientName : newTestimonial.clientName}
+                    value={editingMember ? editingMember.name : newMember.name}
                     onChange={(e) => {
-                      if (editingTestimonial) {
-                        setEditingTestimonial({ ...editingTestimonial, clientName: e.target.value });
+                      if (editingMember) {
+                        setEditingMember({ ...editingMember, name: e.target.value });
                       } else {
-                        setNewTestimonial({ ...newTestimonial, clientName: e.target.value });
+                        setNewMember({ ...newMember, name: e.target.value });
                       }
                     }}
                     className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
-                    placeholder="أدخل اسم العميل"
+                    placeholder="أدخل الاسم الكامل"
                   />
                 </div>
 
@@ -418,12 +436,12 @@ const TestimonialsManager: React.FC = () => {
                     </label>
                     <input
                       type="text"
-                      value={editingTestimonial ? editingTestimonial.position : newTestimonial.position}
+                      value={editingMember ? editingMember.position : newMember.position}
                       onChange={(e) => {
-                        if (editingTestimonial) {
-                          setEditingTestimonial({ ...editingTestimonial, position: e.target.value });
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, position: e.target.value });
                         } else {
-                          setNewTestimonial({ ...newTestimonial, position: e.target.value });
+                          setNewMember({ ...newMember, position: e.target.value });
                         }
                       }}
                       className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
@@ -433,217 +451,272 @@ const TestimonialsManager: React.FC = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      الشركة
+                      القسم
                     </label>
-                    <input
-                      type="text"
-                      value={editingTestimonial ? editingTestimonial.company : newTestimonial.company}
+                    <select
+                      value={editingMember ? editingMember.department : newMember.department}
                       onChange={(e) => {
-                        if (editingTestimonial) {
-                          setEditingTestimonial({ ...editingTestimonial, company: e.target.value });
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, department: e.target.value });
                         } else {
-                          setNewTestimonial({ ...newTestimonial, company: e.target.value });
+                          setNewMember({ ...newMember, department: e.target.value });
                         }
                       }}
-                      className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
-                      placeholder="اسم الشركة"
-                    />
+                      className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
+                    >
+                      {departments.slice(1).map(dept => (
+                        <option key={dept.value} value={dept.value}>
+                          {dept.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    رابط الصورة
+                    النبذة الشخصية
                   </label>
-                  <input
-                    type="url"
-                    value={editingTestimonial ? editingTestimonial.image : newTestimonial.image}
+                  <textarea
+                    value={editingMember ? editingMember.bio : newMember.bio}
                     onChange={(e) => {
-                      if (editingTestimonial) {
-                        setEditingTestimonial({ ...editingTestimonial, image: e.target.value });
+                      if (editingMember) {
+                        setEditingMember({ ...editingMember, bio: e.target.value });
                       } else {
-                        setNewTestimonial({ ...newTestimonial, image: e.target.value });
+                        setNewMember({ ...newMember, bio: e.target.value });
                       }
                     }}
-                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
-                    placeholder="https://example.com/image.jpg"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    التقييم
-                  </label>
-                  <div className="flex items-center space-x-2 space-x-reverse">
-                    {renderStars(
-                      editingTestimonial ? editingTestimonial.rating : newTestimonial.rating || 5,
-                      true,
-                      (rating) => {
-                        if (editingTestimonial) {
-                          setEditingTestimonial({ ...editingTestimonial, rating });
-                        } else {
-                          setNewTestimonial({ ...newTestimonial, rating });
-                        }
-                      }
-                    )}
-                    <span className="text-sm text-gray-600 dark:text-gray-400 mr-2">
-                      ({editingTestimonial ? editingTestimonial.rating : newTestimonial.rating || 5} من 5)
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Project Information */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">معلومات المشروع</h3>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    اسم المشروع
-                  </label>
-                  <input
-                    type="text"
-                    value={editingTestimonial ? editingTestimonial.projectName : newTestimonial.projectName}
-                    onChange={(e) => {
-                      if (editingTestimonial) {
-                        setEditingTestimonial({ ...editingTestimonial, projectName: e.target.value });
-                      } else {
-                        setNewTestimonial({ ...newTestimonial, projectName: e.target.value });
-                      }
-                    }}
-                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
-                    placeholder="أدخل اسم المشروع"
+                    rows={4}
+                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right resize-none"
+                    placeholder="نبذة شخصية عن العضو"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      قيمة المشروع
+                      سنوات الخبرة
                     </label>
                     <input
                       type="text"
-                      value={editingTestimonial ? editingTestimonial.projectValue : newTestimonial.projectValue}
+                      value={editingMember ? editingMember.experience : newMember.experience}
                       onChange={(e) => {
-                        if (editingTestimonial) {
-                          setEditingTestimonial({ ...editingTestimonial, projectValue: e.target.value });
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, experience: e.target.value });
                         } else {
-                          setNewTestimonial({ ...newTestimonial, projectValue: e.target.value });
+                          setNewMember({ ...newMember, experience: e.target.value });
                         }
                       }}
                       className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
-                      placeholder="مثال: 85 مليون دولار"
+                      placeholder="مثال: 15 سنة"
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      المدة
+                      التخصص
                     </label>
                     <input
                       type="text"
-                      value={editingTestimonial ? editingTestimonial.duration : newTestimonial.duration}
+                      value={editingMember ? editingMember.specialty : newMember.specialty}
                       onChange={(e) => {
-                        if (editingTestimonial) {
-                          setEditingTestimonial({ ...editingTestimonial, duration: e.target.value });
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, specialty: e.target.value });
                         } else {
-                          setNewTestimonial({ ...newTestimonial, duration: e.target.value });
+                          setNewMember({ ...newMember, specialty: e.target.value });
                         }
                       }}
                       className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
-                      placeholder="مثال: 36 شهراً"
+                      placeholder="التخصص الرئيسي"
                     />
                   </div>
                 </div>
 
+                <div className="grid grid-cols-1 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      البريد الإلكتروني
+                    </label>
+                    <input
+                      type="email"
+                      value={editingMember ? editingMember.email : newMember.email}
+                      onChange={(e) => {
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, email: e.target.value });
+                        } else {
+                          setNewMember({ ...newMember, email: e.target.value });
+                        }
+                      }}
+                      className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
+                      placeholder="البريد الإلكتروني"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      رقم الهاتف
+                    </label>
+                    <input
+                      type="tel"
+                      value={editingMember ? editingMember.phone : newMember.phone}
+                      onChange={(e) => {
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, phone: e.target.value });
+                        } else {
+                          setNewMember({ ...newMember, phone: e.target.value });
+                        }
+                      }}
+                      className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
+                      placeholder="رقم الهاتف"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      رابط LinkedIn
+                    </label>
+                    <input
+                      type="url"
+                      value={editingMember ? editingMember.linkedin : newMember.linkedin}
+                      onChange={(e) => {
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, linkedin: e.target.value });
+                        } else {
+                          setNewMember({ ...newMember, linkedin: e.target.value });
+                        }
+                      }}
+                      className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
+                      placeholder="https://linkedin.com/in/username"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      رابط الصورة
+                    </label>
+                    <input
+                      type="url"
+                      value={editingMember ? editingMember.image : newMember.image}
+                      onChange={(e) => {
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, image: e.target.value });
+                        } else {
+                          setNewMember({ ...newMember, image: e.target.value });
+                        }
+                      }}
+                      className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
+                      placeholder="https://example.com/image.jpg"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Achievements and Skills */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">الإنجازات والمهارات</h3>
+                
+                {/* Achievements */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    الفئة
-                  </label>
-                  <select
-                    value={editingTestimonial ? editingTestimonial.category : newTestimonial.category}
-                    onChange={(e) => {
-                      if (editingTestimonial) {
-                        setEditingTestimonial({ ...editingTestimonial, category: e.target.value as any });
-                      } else {
-                        setNewTestimonial({ ...newTestimonial, category: e.target.value as any });
-                      }
-                    }}
-                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
-                  >
-                    <option value="commercial">تجاري</option>
-                    <option value="residential">سكني</option>
-                    <option value="industrial">صناعي</option>
-                  </select>
+                  <div className="flex items-center justify-between mb-3">
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      الإنجازات
+                    </label>
+                    <button
+                      onClick={() => addListItem('achievements', !!editingMember)}
+                      className="flex items-center space-x-1 space-x-reverse px-2 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700"
+                    >
+                      <Plus className="w-3 h-3" />
+                      <span>إضافة</span>
+                    </button>
+                  </div>
+                  <div className="space-y-2">
+                    {(editingMember ? editingMember.achievements : newMember.achievements || []).map((achievement, index) => (
+                      <div key={index} className="flex items-center space-x-2 space-x-reverse">
+                        <input
+                          type="text"
+                          value={achievement}
+                          onChange={(e) => updateListItem('achievements', index, e.target.value, !!editingMember)}
+                          className="flex-1 px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white text-right text-sm"
+                          placeholder="أدخل الإنجاز"
+                        />
+                        <button
+                          onClick={() => removeListItem('achievements', index, !!editingMember)}
+                          className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
+                {/* Skills */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    تاريخ الشهادة
-                  </label>
-                  <input
-                    type="date"
-                    value={editingTestimonial ? editingTestimonial.date : newTestimonial.date}
-                    onChange={(e) => {
-                      if (editingTestimonial) {
-                        setEditingTestimonial({ ...editingTestimonial, date: e.target.value });
-                      } else {
-                        setNewTestimonial({ ...newTestimonial, date: e.target.value });
-                      }
-                    }}
-                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
-                  />
+                  <div className="flex items-center justify-between mb-3">
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      المهارات
+                    </label>
+                    <button
+                      onClick={() => addListItem('skills', !!editingMember)}
+                      className="flex items-center space-x-1 space-x-reverse px-2 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700"
+                    >
+                      <Plus className="w-3 h-3" />
+                      <span>إضافة</span>
+                    </button>
+                  </div>
+                  <div className="space-y-2">
+                    {(editingMember ? editingMember.skills : newMember.skills || []).map((skill, index) => (
+                      <div key={index} className="flex items-center space-x-2 space-x-reverse">
+                        <input
+                          type="text"
+                          value={skill}
+                          onChange={(e) => updateListItem('skills', index, e.target.value, !!editingMember)}
+                          className="flex-1 px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white text-right text-sm"
+                          placeholder="أدخل المهارة"
+                        />
+                        <button
+                          onClick={() => removeListItem('skills', index, !!editingMember)}
+                          className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
+                {/* Status and Settings */}
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="flex items-center space-x-2 space-x-reverse">
                       <input
                         type="checkbox"
-                        checked={editingTestimonial ? editingTestimonial.isActive : newTestimonial.isActive}
+                        checked={editingMember ? editingMember.isActive : newMember.isActive}
                         onChange={(e) => {
-                          if (editingTestimonial) {
-                            setEditingTestimonial({ ...editingTestimonial, isActive: e.target.checked });
+                          if (editingMember) {
+                            setEditingMember({ ...editingMember, isActive: e.target.checked });
                           } else {
-                            setNewTestimonial({ ...newTestimonial, isActive: e.target.checked });
+                            setNewMember({ ...newMember, isActive: e.target.checked });
                           }
                         }}
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
                       />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">نشط</span>
-                    </label>
-                  </div>
-
-                  <div>
-                    <label className="flex items-center space-x-2 space-x-reverse">
-                      <input
-                        type="checkbox"
-                        checked={editingTestimonial ? editingTestimonial.isFeatured : newTestimonial.isFeatured}
-                        onChange={(e) => {
-                          if (editingTestimonial) {
-                            setEditingTestimonial({ ...editingTestimonial, isFeatured: e.target.checked });
-                          } else {
-                            setNewTestimonial({ ...newTestimonial, isFeatured: e.target.checked });
-                          }
-                        }}
-                        className="w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500"
-                      />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">مميزة</span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">عضو نشط</span>
                     </label>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      الترتيب
+                      ترتيب العرض
                     </label>
                     <input
                       type="number"
-                      value={editingTestimonial ? editingTestimonial.order : newTestimonial.order}
+                      value={editingMember ? editingMember.order : newMember.order}
                       onChange={(e) => {
-                        if (editingTestimonial) {
-                          setEditingTestimonial({ ...editingTestimonial, order: parseInt(e.target.value) });
+                        if (editingMember) {
+                          setEditingMember({ ...editingMember, order: parseInt(e.target.value) });
                         } else {
-                          setNewTestimonial({ ...newTestimonial, order: parseInt(e.target.value) });
+                          setNewMember({ ...newMember, order: parseInt(e.target.value) });
                         }
                       }}
                       className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right"
@@ -651,45 +724,43 @@ const TestimonialsManager: React.FC = () => {
                     />
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Testimonial Text */}
-            <div className="mt-6">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                نص الشهادة
-              </label>
-              <textarea
-                value={editingTestimonial ? editingTestimonial.testimonialText : newTestimonial.testimonialText}
-                onChange={(e) => {
-                  if (editingTestimonial) {
-                    setEditingTestimonial({ ...editingTestimonial, testimonialText: e.target.value });
-                  } else {
-                    setNewTestimonial({ ...newTestimonial, testimonialText: e.target.value });
-                  }
-                }}
-                rows={4}
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white text-right resize-none"
-                placeholder="أدخل نص الشهادة..."
-              />
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    تاريخ الانضمام
+                  </label>
+                  <input
+                    type="date"
+                    value={editingMember ? editingMember.joinDate : newMember.joinDate}
+                    onChange={(e) => {
+                      if (editingMember) {
+                        setEditingMember({ ...editingMember, joinDate: e.target.value });
+                      } else {
+                        setNewMember({ ...newMember, joinDate: e.target.value });
+                      }
+                    }}
+                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center justify-end space-x-4 space-x-reverse mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
               <button
                 onClick={() => {
                   setShowAddModal(false);
-                  setEditingTestimonial(null);
+                  setEditingMember(null);
                 }}
                 className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
               >
                 إلغاء
               </button>
               <button
-                onClick={handleSaveTestimonial}
+                onClick={handleSaveMember}
                 className="flex items-center space-x-2 space-x-reverse px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
                 <Save className="w-4 h-4" />
-                <span>{editingTestimonial ? 'حفظ التغييرات' : 'إضافة الشهادة'}</span>
+                <span>{editingMember ? 'حفظ التغييرات' : 'إضافة العضو'}</span>
               </button>
             </div>
           </div>
@@ -699,4 +770,4 @@ const TestimonialsManager: React.FC = () => {
   );
 };
 
-export default TestimonialsManager;
+export default TeamManager;
