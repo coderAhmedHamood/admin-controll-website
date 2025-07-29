@@ -10,17 +10,13 @@ import {
   Menu, 
   X, 
   Building,
-  BarChart3,
   MessageSquare,
   HelpCircle,
   Target,
   Globe,
   Bell,
   Search,
-  Shield,
-  Image,
-  UserCheck,
-  Mail
+  UserCheck
 } from 'lucide-react';
 import { useAdmin } from '../../contexts/AdminContext';
 
@@ -39,11 +35,7 @@ const AdminLayout: React.FC = () => {
     { name: 'إدارة الشهادات', href: '/admin/testimonials', icon: MessageSquare },
     { name: 'إدارة الأسئلة الشائعة', href: '/admin/faq', icon: HelpCircle },
     { name: 'إدارة رؤية 2030', href: '/admin/vision2030', icon: Target },
-    { name: 'إدارة المعرض', href: '/admin/gallery', icon: Image },
     { name: 'إدارة العملاء', href: '/admin/clients', icon: UserCheck },
-    { name: 'إدارة الرسائل', href: '/admin/messages', icon: Mail },
-    { name: 'التقارير والإحصائيات', href: '/admin/analytics', icon: BarChart3 },
-    { name: 'إدارة المستخدمين', href: '/admin/users', icon: Shield },
     { name: 'الإعدادات العامة', href: '/admin/settings', icon: Settings },
   ];
 

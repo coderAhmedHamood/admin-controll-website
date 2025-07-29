@@ -13,6 +13,7 @@ import FAQManager from './components/admin/FAQManager';
 import Vision2030Manager from './components/admin/Vision2030Manager';
 import ContentManager from './components/admin/ContentManager';
 import ProjectManager from './components/admin/ProjectManager';
+import ClientsManager from './components/admin/ClientsManager';
 
 // Admin Route Guard
 const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -40,7 +41,7 @@ function App() {
                 <Route path="testimonials" element={<TestimonialsManager />} />
                 <Route path="faq" element={<FAQManager />} />
                 <Route path="vision2030" element={<Vision2030Manager />} />
-                <Route path="analytics" element={<div>Analytics Dashboard</div>} />
+                <Route path="clients" element={<ClientsManager />} />
                 <Route path="settings" element={<div>Settings</div>} />
               </Route>
 

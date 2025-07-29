@@ -10,7 +10,15 @@ import {
   Building,
   Search,
   DollarSign,
-  Clock
+  Clock,
+  Filter,
+  Eye,
+  MoreVertical,
+  Calendar,
+  User,
+  Award,
+  TrendingUp,
+  MessageSquare
 } from 'lucide-react';
 
 // 1. Interface Definition
