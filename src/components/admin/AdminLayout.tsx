@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import ServicesManager from './ServicesManager';
-import TeamManager from './TeamManager';
-import FAQManager from './FAQManager';
+
 import { 
   Home, 
   FileText, 
@@ -29,12 +27,7 @@ import { useAdmin } from '../../contexts/AdminContext';
 const AdminLayout: React.FC = () => {
   const { user, logout } = useAdmin();
   const location = useLocation();
-  const [currentPage, setCurrentPage] = useState('');
 
-  // Get current page from URL
-  React.useEffect(() => {
-    setCurrentPage(location.pathname.split('/').pop() || '');
-  }, [location.pathname]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const navigation = [
@@ -181,24 +174,7 @@ const AdminLayout: React.FC = () => {
 
         {/* Page Content */}
         <main className="p-6">
-          {/* Render specific components based on current page */}
-          {currentPage === 'services' ? (
-            <ServicesManager />
-          ) : currentPage === 'team' ? (
-            <TeamManager />
-          ) : currentPage === 'testimonials' ? (
-            <div>إدارة الشهادات - قيد التطوير</div>
-          ) : currentPage === 'faq' ? (
-            <FAQManager />
-          ) : currentPage === 'vision2030' ? (
-            <div>إدارة رؤية 2030 - قيد التطوير</div>
-          ) : currentPage === 'gallery' ? (
-            <div>إدارة المعرض - قيد التطوير</div>
-          ) : currentPage === 'clients' ? (
-            <div>إدارة العملاء - قيد التطوير</div>
-          ) : (
-            <Outlet />
-          )}
+          <Outlet />
         </main>
       </div>
     </div>
